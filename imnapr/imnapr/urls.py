@@ -21,3 +21,5 @@ urlpatterns = [
     path('', include('newspaper.urls')),
     path('admin/', admin.site.urls),
 ]
+
+

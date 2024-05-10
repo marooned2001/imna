@@ -1,3 +1,8 @@
 .header {
-    background-image: url(https://www.imna.ir/resources/theme/imna/img/header-bg.png), radial-gradient(rgba(0, 86, 124, 0.85) 0%, rgb(0, 86, 124) 100%)
+    background-color: #106184;
+}
+
+.world-bg {
+    background: url("../images/header-bg.png") no-repeat top center,radial-gradient(ellipse at center,rgba(18,98,133,0.85) 0%,rgb(18,98,133) 100%);
+    position: relative;
 }
