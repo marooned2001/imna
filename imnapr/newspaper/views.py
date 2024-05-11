@@ -10,8 +10,9 @@ def home(request):
 
 
 def news(request, news_id):
+    news_list = list(News.objects.all())
     new = News.objects.get(pk=news_id)
-    return render(request, 'news.html', {'new': new})
+    return render(request, 'news.html', {'new': new, 'news_list': news_list})
 
 
 def contact_us(request):

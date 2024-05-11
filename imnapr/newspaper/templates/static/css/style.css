@@ -58,12 +58,33 @@ body {
 
 .group-button:hover {
     color: red;
-    background-color: #E9ECEF;
     -webkit-transition: color 100ms linear;
     -ms-transition: color 100ms linear;
     transition: color 100ms linear;
 }
 
+.group-button-selected:hover {
+    color: #fff;
+}
+
 .city-container {
     background-color: #EFEFEF;;
+}
+
+.title-icons {
+    color: #00567C;
+}
+
+ul {
+    color: #46839E;
+    list-style-type: square;
+}
+
+.summary {
+    font-size: 11px;
+    color: #6c757d;
+}
+
+.footer-text {
+    color: #b3b3b3!important;
 }

@@ -18,7 +18,7 @@
             </div>
         </div>
 
-        <div class="row justify-content-center menu-bg">
+        <div class="row justify-content-center menu-bg g-0">
             <div class="row menu col-8">
                 <div class="d-flex flex-row fw-bold col-9">
                     <div class="d-flex justify-content-center">
@@ -91,9 +91,9 @@
                     </div>
                     <div class="col-4" style="color: #3B3B3B;" x-data="{ chosen: true, viewed: false, discussed: false}">
                         <div class="d-flex justify-content-center">
-                            <button class="border-0 group-button mx-1 px-4 py-1 fw-bold rounded" style="font-size: 13px" @click="chosen = true; viewed = false; discussed = false;">برگزیده</button>
-                            <button class="border-0 group-button mx-1 px-4 py-1 fw-bold rounded" style="font-size: 13px" @click="chosen = false; viewed = true; discussed = false;">پربازدید</button>
-                            <button class="border-0 group-button mx-1 px-4 py-1 fw-bold rounded" style="font-size: 13px" @click="chosen = false; viewed = false; discussed = true;">پربحث</button>
+                            <button class="border-0 group-button mx-1 px-4 py-1 fw-bold rounded" :class="{ 'group-button-selected' : chosen }" style="font-size: 13px" @click="chosen = true; viewed = false; discussed = false;">برگزیده</button>
+                            <button class="border-0 group-button mx-1 px-4 py-1 fw-bold rounded" :class="{ 'group-button-selected' : viewed }" style="font-size: 13px" @click="chosen = false; viewed = true; discussed = false;">پربازدید</button>
+                            <button class="border-0 group-button mx-1 px-4 py-1 fw-bold rounded" :class="{ 'group-button-selected' : discussed }" style="font-size: 13px" @click="chosen = false; viewed = false; discussed = true;">پربحث</button>
                         </div>
                         <div x-show="chosen === true">
                             {% for new in news_list|slice:":10" %}
@@ -116,10 +116,43 @@
                             </ul>
                             {% endfor %}
                         </div>
+                        <div>
+                            <img src="https://media.imna.ir/d/2024/04/29/4/2017100.jpg?ts=1714382249000" width="300px">
+                        </div>
                     </div>
-
                     <div class="city-container" style="height: 400px">
+                        <div class="row">
+                            <div class="col-1 title-icons py-3">
+                                <i class="fa-solid fa-circle d-inline"></i>
+                                <h6 class="fw-bold d-inline" style="font-size: 18px"> شهر </h6>
+                            </div>
+                            <div class="col-11 d-flex flex-column justify-content-center">
+                                <div class="" style="height: 2px; background: linear-gradient(to right,rgba(255,255,255,0) 0%,rgba(112,112,112,0.35) 50%,rgb(0,86,124) 100%)">
 
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row my-3">
+                            <div class="col-3">
+                                <img class="mb-2" src="{{ first_news.new_media_url }}" width="250px">
+                                <a target="_blank" class="my-2 fw-semibold text-decoration-none primary-text" href="/news/{{ first_news.id }}">{{ first_news.new_title }}</a>
+                                <p class="summary">{{ first_news.news_summery }}</p>
+                            </div>
+                            <div class="row col-9 g-0 justify-content-center">
+                                {% for new in news_list|slice:":6" %}
+                                    <div class="row col-6">
+                                        <div class="col-4">
+                                            <img class="mb-2" src="{{ new.new_media_url }}" width="100px">
+                                        </div>
+                                        <div class="col-8">
+                                            <a target="_blank" style="font-size: 13px" class="my-2 fw-bold text-decoration-none primary-text" href="/news/{{ new.id }}">{{ new.new_title }}</a>
+                                        </div>
+                                        <hr style="border-top: dotted 1px">
+                                    </div>
+
+                                {% endfor %}
+                            </div>
+                        </div>
                     </div>
                 </div>
 
@@ -145,6 +178,18 @@
         <div class="row justify-content-center my-3">
             <div class="row col-8  g-0">
                 <div class="col-6">
+                    <div class="row">
+                        <div class="col-2 title-icons">
+                            <i class="fa-regular fa-folder-open d-inline"></i>
+                            <p class="mx-1 d-inline">|</p>
+                            <h6 class="fw-bold d-inline" style="font-size: 14px">تیتر روز </h6>
+                        </div>
+                        <div class="col-10 d-flex flex-column justify-content-center">
+                            <div class="" style="height: 2px; background: linear-gradient(to right,rgba(255,255,255,0) 0%,rgba(112,112,112,0.35) 50%,rgb(0,86,124) 100%)">
+
+                            </div>
+                        </div>
+                    </div>
                     {% for new in news_list|slice:":10" %}
                         <div class="row my-2">
                             <div class="col-3">
@@ -152,20 +197,95 @@
                             </div>
                             <div class="col-9">
                                 <a target="_blank" href="/news/{{ new.id }}" class="fw-bold text-decoration-none" style="color: #434343">{{ new.new_title }}</a>
+                                <p class="summary">{{ new.news_summery }}</p>
                             </div>
                         </div>
                         <hr style="border-top: dotted 1px">
                     {% endfor %}
                 </div>
                 <div class="col-3">
-                    B
+                    <div class="" style="color: #3B3B3B;" x-data="{ report: true, discussion: false}">
+                        <div class="d-flex justify-content-center">
+                            <div class="col-6 justify-content-center">
+                                <button class="border-0 group-button py-1 fw-bold rounded w-100" :class="{ 'group-button-selected' : report }" style="font-size: 13px" @click="report = true; discussion = false;">
+                                    گزارش
+                                </button>
+                            </div>
+                            <div class="col-6 justify-content-center">
+                                <button class="border-0 group-button py-1 fw-bold rounded w-100" :class="{ 'group-button-selected' : discussion }" style="font-size: 13px" @click="report = false; discussion = true;">
+                                    گفتگو
+                                </button>
+                            </div>
+                        </div>
+                        <div x-show="report === true" class="" style="background-color: #EFEFEF">
+                            {% for new in news_list|slice:":20" %}
+                                <ul>
+                                    <li class="fw-semibold my-2" style="font-size: 12px"><a target="_blank" class="text-decoration-none primary-text" href="/news/{{ new.id }}">{{ new.new_title }}</a></li>
+                                </ul>
+                            {% endfor %}
+                        </div>
+                        <div x-show="discussion === true">
+                            {% for new in news_list|slice:":20" %}
+                                <ul>
+                                    <li class="fw-semibold my-2" style="font-size: 12px"><a target="_blank" class="text-decoration-none primary-text" href="/news/{{ new.id }}">{{ new.new_title }}</a></li>
+                                </ul>
+                            {% endfor %}
+                        </div>
+                    </div>
                 </div>
-                <div class="col-3">
-                    C
+                <div class="col-3 g-0">
+                    <div class="row  px-4">
+                        <div class="col-4 g-0 title-icons">
+                            <i class="fa-regular fa-folder-open d-inline"></i>
+                            <p class="mx-1 d-inline">|</p>
+                            <h6 class="fw-bold d-inline" style="font-size: 14px">تیتر روز </h6>
+                        </div>
+                        <div class="col-8 g-0 d-flex flex-column justify-content-center">
+                            <div class="" style="height: 2px; background: linear-gradient(to right,rgba(255,255,255,0) 0%,rgba(112,112,112,0.35) 50%,rgb(0,86,124) 100%)">
+
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        {% for new in news_list|slice:":20" %}
+                            <ul>
+                                <li class="fw-semibold my-2" style="font-size: 12px"><a target="_blank" class="text-decoration-none primary-text" href="/news/{{ new.id }}">{{ new.new_title }}</a></li>
+                            </ul>
+                        {% endfor %}
+                    </div>
                 </div>
             </div>
         </div>
     </div>
+
+    <div class="row justify-content-center" style="height: 250px; background-color: #192F47">
+        <div class="col-8">
+            <div class="d-flex flex-column justify-content-center">
+                <div class="row">
+                    <div class="col-6">
+                        <img src="https://www.imna.ir/resources/theme/imna/img/footer-logo.png?20230201" width="500px">
+                    </div>
+                    <div class="col-3">
+
+                    </div>
+                    <div class="col-3 my-4">
+                        <div class="d-flex fw-bold" style="font-size: 13px">
+                            <a class="footer-text text-decoration-none mx-3">درباره ما</a>
+                            <p style="color: #194292">|</p>
+                            <a class="footer-text text-decoration-none mx-3">آرشیو</a>
+                            <p style="color: #194292">|</p>
+                            <a class="footer-text text-decoration-none mx-3">ارتباط با ما</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr style="border-color: #00A4E3">
+            <div class="d-flex justify-content-center">
+                <p class= "text-white" style="font-size: 12px"> تمامی حقوق این سایت برای خبرگزاری ایمنا محفوظ است</p>
+            </div>
+        </div>
+    </div>
+
 
 
 {%  endblock %}
