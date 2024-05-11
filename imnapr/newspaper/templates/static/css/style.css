@@ -1,3 +1,4 @@
+
 .header {
     background-color: #106184;
 }
@@ -5,4 +6,64 @@
 .world-bg {
     background: url("../images/header-bg.png") no-repeat top center,radial-gradient(ellipse at center,rgba(18,98,133,0.85) 0%,rgb(18,98,133) 100%);
     position: relative;
+}
+
+body {
+    font-family: 'Vazirmatn', sans-serif!important;
+}
+
+.menu-bg {
+    background-color: #333333;
+}
+
+.menu-button {
+    font-size: 13px;
+    color: #fff
+}
+
+.menu-button:hover {
+    background-color: #00567C;
+    -webkit-transition: background-color 100ms linear;
+    -ms-transition: background-color 100ms linear;
+    transition: background-color 100ms linear;
+}
+
+.search-box {
+    font-size: 13px;
+    color: #fff;
+    background-color: #555555;
+    border-radius: 6px;
+}
+
+.primary-text {
+    color: #3B3B3B;
+}
+
+.primary-text:hover {
+    color: #00567c;
+    -webkit-transition: color 100ms linear;
+    -ms-transition: color 100ms linear;
+    transition: color 100ms linear;
+}
+
+.group-button {
+    color: #3B3B3B;
+    background-color: #E9ECEF;
+}
+
+.group-button-selected {
+    color: #fff;
+    background-color: #00567C;
+}
+
+.group-button:hover {
+    color: red;
+    background-color: #E9ECEF;
+    -webkit-transition: color 100ms linear;
+    -ms-transition: color 100ms linear;
+    transition: color 100ms linear;
+}
+
+.city-container {
+    background-color: #EFEFEF;;
 }
