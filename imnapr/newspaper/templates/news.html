@@ -1,0 +1,173 @@
+{% extends './base/base.html' %}
+{%  block title %}{% endblock %}
+{% block template %}
+    <div class="header" style="width: 100%">
+        <div class="d-flex justify-content-center">
+            <div class="row col-8">
+                <div class="col-3"  style="height: 150px">
+                    <div class="my-3">
+                        <img src="/static/images/imna-logo.png" height="60">
+                    </div>
+                </div>
+                <div class="col-6 world-bg">
+
+                </div>
+                <div class="col-3">
+
+                </div>
+            </div>
+        </div>
+
+        <div class="row justify-content-center menu-bg">
+            <div class="row menu col-8">
+                <div class="d-flex flex-row fw-bold col-9">
+                    <div class="d-flex justify-content-center">
+                        <a class="px-2 py-2 menu-button text-decoration-none font-" href="/">خانه</a>
+                    </div>
+                    <div class="d-flex flex-row justify-content-center">
+                        <a class="px-2 py-2 menu-button text-decoration-none">شهر و زندگی</a>
+                    </div>
+                    <div class="d-flex flex-row justify-content-center">
+                        <a class="px-2 py-2 menu-button text-decoration-none">استان ها</a>
+                    </div>
+                    <div class="d-flex flex-row justify-content-center">
+                        <a class="px-2 py-2 menu-button text-decoration-none">شهر های جهان</a>
+                    </div>
+                    <div class="d-flex flex-row justify-content-center">
+                        <a class="px-2 py-2 menu-button text-decoration-none">سیاست</a>
+                    </div>
+                    <div class="d-flex flex-row justify-content-center">
+                        <a class="px-2 py-2 menu-button text-decoration-none">اقتصاد</a>
+                    </div>
+                    <div class="d-flex flex-row justify-content-center">
+                        <a class="px-2 py-2 menu-button text-decoration-none">فرهنگ</a>
+                    </div>
+                    <div class="d-flex flex-row justify-content-center">
+                        <a class="px-2 py-2 menu-button text-decoration-none">جامعه</a>
+                    </div>
+                    <div class="d-flex flex-row justify-content-center">
+                        <a class="px-2 py-2 menu-button text-decoration-none">ورزش</a>
+                    </div>
+                    <div class="d-flex flex-row justify-content-center">
+                        <a class="px-2 py-2 menu-button text-decoration-none">فناوری</a>
+                    </div>
+                    <div class="d-flex flex-row justify-content-center">
+                        <a class="px-2 py-2 menu-button text-decoration-none">چند رسانه ای</a>
+                    </div>
+                    <div class="d-flex flex-row justify-content-center">
+                        <a class="px-2 py-2 menu-button text-decoration-none">عکس</a>
+                    </div>
+                    <div class="d-flex flex-row justify-content-center">
+                        <a class="px-2 py-2 menu-button text-decoration-none">ایمنا مگ</a>
+                    </div>
+                </div>
+                <div class="col-3 d-flex justify-content-center my-1">
+                    <input class="p-1 search-box border-0" placeholder="جستجو">
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/persian-date@1.1.0/dist/persian-date.min.js"></script>
+    <div class="row justify-content-center">
+        <div class="row col-8 my-4">
+            <div class="col-6">
+                <div class="d-flex justify-content-center" style="font-size: 12px; color:#3b3b3b ">
+                    <p id="news-date" class=" m-0"></p>
+                    <script>
+                        const publish_date = new Date('{{ new.new_publish_date }}')
+                        const pd = new persianDate(publish_date).format("dddd DD MMMM YYYY")
+                        document.getElementById('news-date').innerText = pd
+                    </script>
+                </div>
+                <hr style="border-top: dotted 1px; border-color: #3B3B3B">
+                <div class="my-1">
+                    <h4 class="fw-bold fs-4"> {{ new.new_title }}</h4>
+                </div>
+                <div class="">
+                    <img src="{{ new.new_media_url }}" style="object-fit: contain; width: auto;height: auto;max-width: 100%; max-height: 100%;">
+                </div>
+                <div class="my-3" style="font-family: 'Vazirmatn', sans-serif!important; font-size: 13px">
+                    {{ new.new_text|safe }}
+                </div>
+                <div>
+                    <div class="row">
+                        <div class="col-2 title-icons py-3">
+                            <i class="fa-solid fa-circle d-inline"></i>
+                            <h6 class="fw-bold d-inline" style="font-size: 18px"> نظر شما </h6>
+                        </div>
+                        <div class="col-10 d-flex flex-column justify-content-center">
+                            <div class="" style="height: 2px; background: linear-gradient(to right,rgba(255,255,255,0) 0%,rgba(112,112,112,0.35) 50%,rgb(0,86,124) 100%)">
+
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="row my-2">
+                            <div class="col-6 px-2">
+                                <input type="text" class="form-control" placeholder="نام" style="font-size: 13px">
+                            </div>
+                            <div class="col-6 px-2">
+                                <input type="text" class="form-control" placeholder="ایمیل" style="font-size: 13px">
+                            </div>
+                        </div>
+                        <div class="my-2">
+                            <textarea class="form-control" rows="3" placeholder="نظر شما" style="font-size: 13px"></textarea>
+                        </div>
+                        <button class="btn btn-primary my-2">ارسال</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-3">
+                <div class="row  px-4">
+                    <div class="g-0 title-icons">
+                        <i class="fa-regular fa-folder-open d-inline"></i>
+                        <p class="mx-1 d-inline">|</p>
+                        <h6 class="fw-bold d-inline" style="font-size: 14px">آخرین اخبار شهرهای جهان</h6>
+                    </div>
+                </div>
+                <div>
+                    {% for new in news_list|slice:":6" %}
+                        <ul>
+                            <li class="fw-semibold my-2" style="font-size: 12px"><a target="_blank" class="text-decoration-none primary-text" href="/news/{{ new.id }}">{{ new.new_title }}</a></li>
+                        </ul>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="col-3">
+                <div>
+                    <img src="https://media.imna.ir/d/2024/04/21/4/2012963.jpg?ts=1713729869000" width="200px">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row justify-content-center" style="height: 250px; background-color: #192F47">
+        <div class="col-8">
+            <div class="d-flex flex-column justify-content-center">
+                <div class="row">
+                    <div class="col-6">
+                        <img src="https://www.imna.ir/resources/theme/imna/img/footer-logo.png?20230201" width="500px">
+                    </div>
+                    <div class="col-3">
+
+                    </div>
+                    <div class="col-3 my-4">
+                        <div class="d-flex fw-bold" style="font-size: 13px">
+                            <a class="footer-text text-decoration-none mx-3">درباره ما</a>
+                            <p style="color: #194292">|</p>
+                            <a class="footer-text text-decoration-none mx-3">آرشیو</a>
+                            <p style="color: #194292">|</p>
+                            <a class="footer-text text-decoration-none mx-3">ارتباط با ما</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr style="border-color: #00A4E3">
+            <div class="d-flex justify-content-center">
+                <p class= "text-white" style="font-size: 12px"> تمامی حقوق این سایت برای خبرگزاری ایمنا محفوظ است</p>
+            </div>
+        </div>
+    </div>
+
+{%  endblock %}
+

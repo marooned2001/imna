@@ -9,6 +9,7 @@ class News(models.Model):
     new_media_url = models.TextField()
     new_publish_date = models.DateField(auto_now=True)
     new_tag = models.TextField()
+    news_summery = models.TextField(default='')
 
 
 class Comments(models.Model):
